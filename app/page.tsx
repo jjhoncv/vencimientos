@@ -9,13 +9,17 @@ export default async function Page() {
   return (
     <main>
       <h1>{leerNombreDelProyecto()}</h1>
-      <ul aria-label="Etiquetas">
-        {etiquetas.map((e) => (
-          <li key={`${e.producto}|${e.lote}|${e.vence}`}>
-            <strong>{e.producto}</strong> · {e.lote} · vence {e.vence}
-          </li>
-        ))}
-      </ul>
+      {etiquetas.length === 0 ? (
+        <p>No hay etiquetas cargadas</p>
+      ) : (
+        <ul aria-label="Etiquetas">
+          {etiquetas.map((e) => (
+            <li key={`${e.producto}|${e.lote}|${e.vence}`}>
+              <strong>{e.producto}</strong> · {e.lote} · vence {e.vence}
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 }
