@@ -23,5 +23,12 @@ export default defineConfig({
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: process.env.BASE_URL
     ? undefined
-    : { command: "npm start", url: baseURL, reuseExistingServer: !process.env.CI, timeout: 60_000 },
+    : {
+        command: "npm start",
+        url: baseURL,
+        reuseExistingServer: !process.env.CI,
+        timeout: 60_000,
+        // Fuente de datos simulada: nunca la hoja real.
+        env: { ETIQUETAS_SIMULADAS_ARCHIVO: "test-results/etiquetas-simuladas.json" },
+      },
 });
