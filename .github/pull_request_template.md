@@ -16,7 +16,7 @@ flowchart TD
     B -- No --> D["⚠️ Qué ve"]
 ```
 
-**Cómo probarlo** en el [preview](https://pr-N--vencimientos-jjhoncv.netlify.app):
+**Cómo probarlo** en el preview (el enlace lo comenta el bot en este PR; no lo escribas a mano: el número del PR no es el del ticket):
 1. <!-- Pasos concretos, con lo que debe ver en cada uno. -->
 
 **Qué necesito de ti**
