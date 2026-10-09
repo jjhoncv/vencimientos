@@ -1,9 +1,12 @@
 {
   "proyecto": "vencimientos",
-  "fase": null,
+  "fase": {
+    "titulo": "Fase 1 — Lista de etiquetas",
+    "vence": "2026-10-16T00:00:00Z"
+  },
   "avance": {
     "verdes": 0,
-    "total": 0,
+    "total": 6,
     "porcentaje": 0
   },
   "salud": {
@@ -14,7 +17,7 @@
     "diasAtraso": 0,
     "pausa": false
   },
-  "actualizado": "2026-10-09T01:21:22.501Z",
+  "actualizado": "2026-10-09T01:49:24.340Z",
   "vencimientos": [
     {
       "secreto": "ANTHROPIC_API_KEY",
