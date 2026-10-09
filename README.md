@@ -14,7 +14,7 @@ Una página que lee las etiquetas de una hoja de Google y muestra, ordenadas por
 - **Producción:** https://vencimientos-jjhoncv.netlify.app
 - **Alcance:** [`PROYECTO.md`](PROYECTO.md) · **Decisiones:** [`docs/decisiones/`](docs/decisiones/README.md) · **Tablero:** pestaña *Projects* del repo
 
-Creado con **[Guardián](https://github.com/jjhoncv/guardian)** v0.16.0: alcance fijo, producción desde el día 1, tareas chicas que el dueño aprueba. Los workflows de `.github/workflows/` son llamadas cortas a los del Guardián; el pipeline vive allí.
+Creado con **[Guardián](https://github.com/jjhoncv/guardian)** v0.17.0: alcance fijo, producción desde el día 1, tareas chicas que el dueño aprueba. Los workflows de `.github/workflows/` son llamadas cortas a los del Guardián; el pipeline vive allí.
 
 ## Empezar
 

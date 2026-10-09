@@ -1,4 +1,4 @@
-# Llama al workflow del Guardián (v0.16.0). Para subir de versión, cambia el @vX.Y.Z (Dependabot lo propone).
+# Llama al workflow del Guardián (v0.17.0). Para subir de versión, cambia el @vX.Y.Z (Dependabot lo propone).
 name: Chequeo del PR
 
 on:
@@ -12,4 +12,4 @@ permissions:
 
 jobs:
   chequeo:
-    uses: jjhoncv/guardian/.github/workflows/guardian-chequeo-pr.yml@v0.16.0
+    uses: jjhoncv/guardian/.github/workflows/guardian-chequeo-pr.yml@v0.17.0
