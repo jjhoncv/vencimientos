@@ -29,8 +29,29 @@ Given(
   },
 );
 
+Given(
+  "que la hoja tiene {string} que vence el {word} y {string} que vence el {word}",
+  async ({}, a: string, fechaA: string, b: string, fechaB: string) => {
+    hojaCon([
+      [...separar(a), fechaA],
+      [...separar(b), fechaB],
+    ]);
+  },
+);
+
 When("entro a la portada", async ({ page }) => {
   await page.goto("/");
+});
+
+Then("{string} aparece antes que {string}", async ({ page }, primero: string, segundo: string) => {
+  const items = await page.getByRole("list", { name: "Etiquetas" }).getByRole("listitem").allTextContents();
+  const posicion = (nombre: string) => {
+    const [producto, lote] = separar(nombre);
+    return items.findIndex((t) => t.includes(producto) && t.includes(lote));
+  };
+  expect(posicion(primero)).toBeGreaterThanOrEqual(0);
+  expect(posicion(segundo)).toBeGreaterThanOrEqual(0);
+  expect(posicion(primero)).toBeLessThan(posicion(segundo));
 });
 
 Then("veo las dos etiquetas con su producto, lote y fecha de vencimiento", async ({ page }) => {

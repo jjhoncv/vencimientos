@@ -23,6 +23,11 @@ export function parsearFilas(filas: string[][] | undefined): Etiqueta[] {
   });
 }
 
+// Las fechas son AAAA-MM-DD: comparadas como texto ya quedan en orden cronológico.
+export function ordenarPorFecha(etiquetas: Etiqueta[]): Etiqueta[] {
+  return [...etiquetas].sort((a, b) => a.vence.localeCompare(b.vence));
+}
+
 async function leerHoja(): Promise<string[][] | undefined> {
   const { GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY } = process.env;
   if (!GOOGLE_SHEET_ID || !GOOGLE_SERVICE_ACCOUNT_EMAIL || !GOOGLE_PRIVATE_KEY) {
@@ -51,7 +56,7 @@ async function leerFilas(): Promise<string[][] | undefined> {
 
 export async function leerEtiquetas(): Promise<Etiqueta[]> {
   try {
-    return parsearFilas(await leerFilas());
+    return ordenarPorFecha(parsearFilas(await leerFilas()));
   } catch (error) {
     console.error("No se pudo leer la pestaña etiquetas", error);
     return [];
