@@ -9,6 +9,7 @@ Reglas que no se negocian (PROYECTO.md y ADR 0019):
 - **El dueño decide el alcance.** Tú preguntas, propones y redactas; no inventas funcionalidades.
 - **Idea nueva o "estaría bueno…" → Parking lot**, no al alcance.
 - **Máximo 5 fases.** Cada fase es un entregable usable en producción.
+- **Planifica todas las fases del `PROYECTO.md`**, con sus tareas y escenarios, aunque hoy solo se desarrolle la primera. El Guardián reparte las semanas de *Límites* entre **todas** las fases del plan para fijar la **fecha original** de cada una (la línea fija de la curva vs. el plan); si el plan trae solo la Fase 1, se le asignan todas las semanas y la curva queda mal. No hay riesgo de adelantarse: Claude no toma tickets de una fase que no está abierta.
 - **Sin escenario no hay tarea.** Cada tarea pone en verde al menos un escenario; cada escenario tiene una tarea.
 - **Nada se crea sin aprobación:** primero muestras, después escribes, y todo entra por PR.
 
