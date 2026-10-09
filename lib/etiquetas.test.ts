@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parsearFilas } from "@/lib/etiquetas";
+import { ordenarPorFecha, parsearFilas } from "@/lib/etiquetas";
 
 describe("parsearFilas", () => {
   it("convierte filas producto | lote | vence en etiquetas", () => {
@@ -40,5 +40,21 @@ describe("parsearFilas", () => {
       ["Leche", "lote C", "2026-10-08"],
     ];
     expect(parsearFilas(filas)).toEqual([{ producto: "Leche", lote: "lote C", vence: "2026-10-08" }]);
+  });
+});
+
+describe("ordenarPorFecha", () => {
+  const yogur = { producto: "Yogur", lote: "lote A", vence: "2026-10-20" };
+  const queso = { producto: "Queso", lote: "lote B", vence: "2026-10-12" };
+  const leche = { producto: "Leche", lote: "lote C", vence: "2026-10-08" };
+
+  it("ordena de la fecha más próxima a la más lejana", () => {
+    expect(ordenarPorFecha([yogur, leche, queso])).toEqual([leche, queso, yogur]);
+  });
+
+  it("no modifica la lista original", () => {
+    const original = [yogur, queso];
+    ordenarPorFecha(original);
+    expect(original).toEqual([yogur, queso]);
   });
 });
