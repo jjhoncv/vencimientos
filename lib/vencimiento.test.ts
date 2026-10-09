@@ -1,5 +1,12 @@
 import { expect, it } from "vitest";
-import { vencePronto } from "./vencimiento";
+import { estaVencida, vencePronto } from "./vencimiento";
+
+it("está vencida si la fecha es anterior a hoy", () => {
+  expect(estaVencida("2026-10-08", "2026-10-10")).toBe(true);
+  expect(estaVencida("2026-09-30", "2026-10-01")).toBe(true);
+  expect(estaVencida("2026-10-10", "2026-10-10")).toBe(false);
+  expect(estaVencida("2026-10-12", "2026-10-10")).toBe(false);
+});
 
 it("vence pronto si faltan 7 días o menos", () => {
   expect(vencePronto("2026-10-12", "2026-10-10")).toBe(true);

@@ -38,6 +38,15 @@ it("lista cada etiqueta con producto, lote y fecha de vencimiento", async () => 
   expect(items.some((t) => t?.startsWith("Queso · lote B · vence 2026-10-12"))).toBe(true);
 });
 
+it("marca «vencida» y en gris las de fecha anterior a hoy", async () => {
+  vi.mocked(leerEtiquetas).mockResolvedValueOnce([{ producto: "Leche", lote: "lote C", vence: "2026-10-08" }]);
+  render(await Page());
+  const leche = screen.getByText("Leche", { selector: "strong" }).closest("li")!;
+  expect(leche.textContent).toContain("vencida");
+  expect(leche.textContent).not.toContain("vence pronto");
+  expect(leche.style.color).toBe("gray");
+});
+
 it("marca «vence pronto» y en rojo solo las que vencen en 7 días o menos", async () => {
   render(await Page());
   const queso = screen.getByText("Queso", { selector: "strong" }).closest("li")!;

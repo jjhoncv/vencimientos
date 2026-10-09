@@ -51,6 +51,11 @@ Given("que hoy es {word} y {string} vence el {word}", async ({}, hoy: string, no
   writeFileSync(ARCHIVO_HOY, hoy);
 });
 
+Given("que hoy es {word} y {string} venció el {word}", async ({}, hoy: string, nombre: string, vence: string) => {
+  hojaCon([[...separar(nombre), vence]]);
+  writeFileSync(ARCHIVO_HOY, hoy);
+});
+
 Then("{string} aparece marcada como {string}", async ({ page }, nombre: string, marca: string) => {
   const [producto, lote] = separar(nombre);
   const item = page.getByRole("listitem").filter({ hasText: producto }).filter({ hasText: lote });
