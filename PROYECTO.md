@@ -92,3 +92,4 @@ Escenario: Contador de la semana
 | 2026-10-08 | Nombre: Vencimientos | Corto y dice lo que hace |
 | 2026-10-08 | Datos en una hoja de Google, sin base de datos | Es una prueba y el dueño ya anota ahí |
 | 2026-10-08 | Proyecto de prueba de punta a punta del Guardián (T6, guardian#187) | Confirmar que un proyecto nuevo nace con todo el seguimiento |
+| 2026-10-08 | Las pruebas usan datos inventados (fuente de datos simulada) y una fecha de «hoy» fija; nunca la hoja real | Resultados repetibles y sin tocar los datos del dueño |
