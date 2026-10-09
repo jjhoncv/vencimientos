@@ -11,5 +11,6 @@ export async function leerHoy(): Promise<string> {
       // sin archivo: se usa la fecha real
     }
   }
-  return new Date().toISOString().slice(0, 10);
+  // La fecha de Lima, no la UTC del servidor: de 19:00 a 24:00 en Lima, en UTC ya es mañana.
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Lima" }).format(new Date());
 }
