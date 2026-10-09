@@ -1,8 +1,8 @@
 {
   "proyecto": "vencimientos",
   "fase": {
-    "titulo": "Fase 1 — Lista de etiquetas",
-    "vence": "2026-10-16T00:00:00Z"
+    "titulo": "Fase 2 — Las que vencen",
+    "vence": "2026-10-23T00:00:00Z"
   },
   "avance": {
     "verdes": 3,
@@ -17,7 +17,7 @@
     "diasAtraso": 0,
     "pausa": false
   },
-  "actualizado": "2026-10-09T03:09:31.938Z",
+  "actualizado": "2026-10-09T03:19:22.836Z",
   "vencimientos": [
     {
       "secreto": "ANTHROPIC_API_KEY",
