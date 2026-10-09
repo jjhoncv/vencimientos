@@ -13,6 +13,7 @@
 - **Tokens fuera de la URL final.** Cuándo: usas un token de un enlace (entrada, invitación). Qué: después de validarlo, el destino no lo lleva. Por qué: queda en la barra y en el historial. _Ej.: vitrina#24._
 - **No reimplementes protocolos ni criptografía** (SMTP, OAuth, JWT…). Si hace falta una dependencia y no puedes instalarla, para y pídesela al dueño en el PR, con el paquete y el motivo. _Ej.: vitrina#20._
 - **Lo que no se prueba en local** (comportamiento del hosting, correo real): dilo en el PR y dale al dueño el paso exacto para comprobarlo en el preview. _Ej.: vitrina#20, #24._
+- **«Hoy» en la zona del dueño, no en UTC.** Cuándo: comparas fechas con el día de hoy (vencimientos, plazos). Qué: calcula la fecha con `Intl.DateTimeFormat("en-CA", { timeZone: "America/Lima" })` y pruébalo con una hora de la noche. Por qué: el servidor está en UTC; de 19:00 a 24:00 en Lima, en UTC ya es mañana y todo se corre un día. _Ej.: vencimientos#17._
 
 ## Según el tipo de proyecto
 

@@ -16,6 +16,8 @@ export default defineConfig({
   testDir,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
+  // Los escenarios comparten los archivos de datos simulados: en paralelo se pisan.
+  workers: 1,
   reporter: process.env.CI
     ? [["github"], ["list"], ["json", { outputFile: "test-results/resultados.json" }]]
     : [["list"], ["json", { outputFile: "test-results/resultados.json" }]],
@@ -29,6 +31,9 @@ export default defineConfig({
         reuseExistingServer: !process.env.CI,
         timeout: 60_000,
         // Fuente de datos simulada: nunca la hoja real.
-        env: { ETIQUETAS_SIMULADAS_ARCHIVO: "test-results/etiquetas-simuladas.json" },
+        env: {
+          ETIQUETAS_SIMULADAS_ARCHIVO: "test-results/etiquetas-simuladas.json",
+          HOY_SIMULADO_ARCHIVO: "test-results/hoy-simulado.txt",
+        },
       },
 });

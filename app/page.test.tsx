@@ -12,6 +12,8 @@ vi.mock("@/lib/etiquetas", () => ({
   ]),
 }));
 
+vi.mock("@/lib/hoy", () => ({ leerHoy: vi.fn(async () => "2026-10-10") }));
+
 afterEach(cleanup);
 
 // E1 — Proyecto nuevo en producción el día 1: la página muestra el nombre del PROYECTO.md,
@@ -33,5 +35,14 @@ it("lista cada etiqueta con producto, lote y fecha de vencimiento", async () => 
   render(await Page());
   const items = screen.getAllByRole("listitem").map((li) => li.textContent);
   expect(items).toContain("Yogur · lote A · vence 2026-10-20");
-  expect(items).toContain("Queso · lote B · vence 2026-10-12");
+  expect(items.some((t) => t?.startsWith("Queso · lote B · vence 2026-10-12"))).toBe(true);
+});
+
+it("marca «vence pronto» y en rojo solo las que vencen en 7 días o menos", async () => {
+  render(await Page());
+  const queso = screen.getByText("Queso", { selector: "strong" }).closest("li")!;
+  const yogur = screen.getByText("Yogur", { selector: "strong" }).closest("li")!;
+  expect(queso.textContent).toContain("vence pronto");
+  expect(queso.style.color).toBe("red");
+  expect(yogur.textContent).not.toContain("vence pronto");
 });
