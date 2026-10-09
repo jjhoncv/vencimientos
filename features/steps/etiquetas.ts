@@ -56,6 +56,18 @@ Given("que hoy es {word} y {string} venció el {word}", async ({}, hoy: string, 
   writeFileSync(ARCHIVO_HOY, hoy);
 });
 
+Given("que hoy es {word} y {int} etiquetas vencen en los próximos 7 días", async ({}, hoy: string, n: number) => {
+  const [a, m, d] = hoy.split("-").map(Number);
+  hojaCon(
+    Array.from({ length: n }, (_, i) => [
+      `Producto${i + 1}`,
+      `lote ${i + 1}`,
+      new Date(Date.UTC(a, m - 1, d + i + 1)).toISOString().slice(0, 10),
+    ]),
+  );
+  writeFileSync(ARCHIVO_HOY, hoy);
+});
+
 Then("{string} aparece marcada como {string}", async ({ page }, nombre: string, marca: string) => {
   const [producto, lote] = separar(nombre);
   const item = page.getByRole("listitem").filter({ hasText: producto }).filter({ hasText: lote });
