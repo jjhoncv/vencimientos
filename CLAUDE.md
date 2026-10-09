@@ -51,7 +51,7 @@ Están en **`docs/lecciones.md`**: criterio con alcance (siempre / según tipo /
 - release-please para CHANGELOG y versiones
 
 ## Seguridad
-- Nunca escribas secretos en el código ni en commits: usa GitHub Secrets y variables de Netlify.
+- Nunca escribas secretos en el código ni en commits. Los que usa la página en ejecución (Google, correo, firmas…) van en las **variables de Netlify, marcadas como secretas**; **GitHub Secrets, solo los que usa un workflow**. Al pedírselos al dueño, dile exactamente cuáles y dónde (ver `docs/lecciones.md`).
 - Si necesitas una credencial o una cuenta, **pídela** y explica para qué; no la inventes ni la busques en el disco.
 - Permisos mínimos en tokens y cuentas de servicio.
 

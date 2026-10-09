@@ -35,6 +35,8 @@ Muestra el `PROYECTO.md` completo y **espera el OK** antes de seguir. Lo que el 
 
 ## Paso 3 — Planificar
 
+Antes de proponer el plan, **lee `docs/lecciones.md`**: lo que el plan le pida al dueño (cuentas, secretos, dónde cargarlos) tiene que seguir esas lecciones, porque se copia a cada ticket y Claude en la nube lo repite.
+
 **Escenarios** — un archivo por fase: `features/fase-<N>-<slug>.feature`.
 - Primera línea `# language: es`; `Característica:` con el entregable de la fase; cada escenario con la etiqueta `@fase-<N>`.
 - Copia los escenarios de los criterios de `PROYECTO.md` **sin cambiar su sentido**. Si uno no se puede probar en la página, propón reescribirlo y pregunta.
