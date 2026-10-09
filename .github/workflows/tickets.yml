@@ -1,4 +1,4 @@
-# Llama al workflow del Guardián (v0.16.0). Para subir de versión, cambia el @vX.Y.Z (Dependabot lo propone).
+# Llama al workflow del Guardián (v0.17.0). Para subir de versión, cambia el @vX.Y.Z (Dependabot lo propone).
 name: Tickets del plan
 
 on:
@@ -13,4 +13,4 @@ permissions:
 
 jobs:
   tickets:
-    uses: jjhoncv/guardian/.github/workflows/guardian-tickets.yml@v0.16.0
+    uses: jjhoncv/guardian/.github/workflows/guardian-tickets.yml@v0.17.0

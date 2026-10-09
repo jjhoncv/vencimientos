@@ -1,4 +1,4 @@
-# Llama al workflow del Guardián (v0.16.0): fase, avance y salud del proyecto → rama `estado` y badges del README.
+# Llama al workflow del Guardián (v0.17.0): fase, avance y salud del proyecto → rama `estado` y badges del README.
 name: Estado
 
 on:
@@ -20,6 +20,6 @@ jobs:
       actions: read
       issues: read
       pull-requests: read
-    uses: jjhoncv/guardian/.github/workflows/guardian-estado.yml@v0.16.0
+    uses: jjhoncv/guardian/.github/workflows/guardian-estado.yml@v0.17.0
     # El PAT de release-please solo se usa para leer su fecha de vencimiento (los avisos avisan 7 días antes).
     secrets: inherit
