@@ -1,0 +1,100 @@
+{
+  "fases": [
+    {
+      "numero": 1,
+      "nombre": "Lista de etiquetas",
+      "entregable": "La portada lee la pestaña etiquetas (producto, lote, vence) y la muestra ordenada por fecha de vencimiento"
+    },
+    {
+      "numero": 2,
+      "nombre": "Las que vencen",
+      "entregable": "Las que vencen en 7 días o menos salen en rojo, las vencidas en gris y arriba un contador"
+    }
+  ],
+  "tareas": [
+    {
+      "id": "T1",
+      "fase": 1,
+      "titulo": "Leer la pestaña etiquetas y mostrarla en la portada",
+      "escenarios": [
+        {
+          "archivo": "features/fase-1-lista-de-etiquetas.feature",
+          "gherkin": "Escenario: Ver las etiquetas\n  Dado que la hoja tiene las etiquetas \"Yogur lote A\" que vence el 2026-10-20 y \"Queso lote B\" que vence el 2026-10-12\n  Cuando entro a la portada\n  Entonces veo las dos etiquetas con su producto, lote y fecha de vencimiento"
+        }
+      ],
+      "que": "Lectura de la pestaña `etiquetas` con una service account de solo lectura y lista en la portada con producto, lote y fecha. En las pruebas, una fuente de datos simulada (nunca la hoja real). Si falta la pestaña o una columna, la página no se cae.",
+      "hecho": "El escenario «Ver las etiquetas» en verde.",
+      "necesita": "Una hoja de Google con la pestaña `etiquetas` y los encabezados `producto | lote | vence` (fecha AAAA-MM-DD). Una service account con rol Lector compartida en esa hoja. En las variables de Netlify, marcadas como secretas: GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_EMAIL y GOOGLE_PRIVATE_KEY (GitHub Secrets no: ningún workflow las usa). Aviso: con el mismo valor en todos los contextos, staging y producción leen la misma hoja (aceptado en un MVP)."
+    },
+    {
+      "id": "T2",
+      "fase": 1,
+      "titulo": "Ordenar las etiquetas por fecha de vencimiento",
+      "escenarios": [
+        {
+          "archivo": "features/fase-1-lista-de-etiquetas.feature",
+          "gherkin": "Escenario: Ordenadas por fecha\n  Dado que la hoja tiene \"Yogur lote A\" que vence el 2026-10-20 y \"Queso lote B\" que vence el 2026-10-12\n  Cuando entro a la portada\n  Entonces \"Queso lote B\" aparece antes que \"Yogur lote A\""
+        }
+      ],
+      "que": "La lista se ordena de la fecha de vencimiento más próxima a la más lejana.",
+      "hecho": "El escenario «Ordenadas por fecha» en verde.",
+      "necesita": ""
+    },
+    {
+      "id": "T3",
+      "fase": 1,
+      "titulo": "Mensaje cuando la hoja está vacía",
+      "escenarios": [
+        {
+          "archivo": "features/fase-1-lista-de-etiquetas.feature",
+          "gherkin": "Escenario: Hoja vacía\n  Dado que la hoja no tiene etiquetas\n  Cuando entro a la portada\n  Entonces veo \"No hay etiquetas cargadas\""
+        }
+      ],
+      "que": "Si la pestaña no tiene filas, la portada muestra «No hay etiquetas cargadas» en lugar de la lista.",
+      "hecho": "El escenario «Hoja vacía» en verde.",
+      "necesita": ""
+    },
+    {
+      "id": "T4",
+      "fase": 2,
+      "titulo": "Marcar en rojo las que vencen en 7 días o menos",
+      "escenarios": [
+        {
+          "archivo": "features/fase-2-las-que-vencen.feature",
+          "gherkin": "Escenario: Las que vencen esta semana, en rojo\n  Dado que hoy es 2026-10-10 y \"Queso lote B\" vence el 2026-10-12\n  Cuando entro a la portada\n  Entonces \"Queso lote B\" aparece marcada como \"vence pronto\""
+        }
+      ],
+      "que": "Cada etiqueta que vence en 7 días o menos se marca «vence pronto» y sale en rojo. La fecha de «hoy» se puede fijar en las pruebas.",
+      "hecho": "El escenario «Las que vencen esta semana, en rojo» en verde.",
+      "necesita": ""
+    },
+    {
+      "id": "T5",
+      "fase": 2,
+      "titulo": "Marcar en gris las vencidas",
+      "escenarios": [
+        {
+          "archivo": "features/fase-2-las-que-vencen.feature",
+          "gherkin": "Escenario: Las vencidas, en gris\n  Dado que hoy es 2026-10-10 y \"Leche lote C\" venció el 2026-10-08\n  Cuando entro a la portada\n  Entonces \"Leche lote C\" aparece marcada como \"vencida\""
+        }
+      ],
+      "que": "Cada etiqueta con fecha anterior a hoy se marca «vencida» y sale en gris.",
+      "hecho": "El escenario «Las vencidas, en gris» en verde.",
+      "necesita": ""
+    },
+    {
+      "id": "T6",
+      "fase": 2,
+      "titulo": "Contador de las que vencen esta semana",
+      "escenarios": [
+        {
+          "archivo": "features/fase-2-las-que-vencen.feature",
+          "gherkin": "Escenario: Contador de la semana\n  Dado que hoy es 2026-10-10 y 3 etiquetas vencen en los próximos 7 días\n  Cuando entro a la portada\n  Entonces veo \"3 vencen esta semana\""
+        }
+      ],
+      "que": "Arriba de la lista, un contador con las etiquetas que vencen en los próximos 7 días («N vencen esta semana»).",
+      "hecho": "El escenario «Contador de la semana» en verde.",
+      "necesita": ""
+    }
+  ]
+}
