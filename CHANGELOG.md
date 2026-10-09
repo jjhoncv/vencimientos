@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.0](https://github.com/jjhoncv/vencimientos/compare/v0.1.0...v0.2.0) (2026-10-09)
+
+
+### Funcionalidades
+
+* **#10:** marcar en gris las vencidas ([#19](https://github.com/jjhoncv/vencimientos/issues/19)) ([d3827cd](https://github.com/jjhoncv/vencimientos/commit/d3827cd64834edcf18bae4f7aa6bb606f0189ab2))
+* **#11:** contador de las que vencen esta semana ([#20](https://github.com/jjhoncv/vencimientos/issues/20)) ([6f42798](https://github.com/jjhoncv/vencimientos/commit/6f427989cb911a4bbae0c2af86f31b019c7cb508))
+* **#9:** marcar en rojo las que vencen en 7 días o menos ([#17](https://github.com/jjhoncv/vencimientos/issues/17)) ([6b1b67a](https://github.com/jjhoncv/vencimientos/commit/6b1b67aec035c8181c662a9b90cc1939a3dff85a))
+
 ## 0.1.0 (2026-10-09)
 
 
