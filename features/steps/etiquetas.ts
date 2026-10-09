@@ -43,6 +43,20 @@ Given("que la hoja no tiene etiquetas", async () => {
   hojaCon([]);
 });
 
+// Fecha de «hoy» simulada: el servidor de pruebas la lee de este archivo (playwright.config.ts).
+const ARCHIVO_HOY = "test-results/hoy-simulado.txt";
+
+Given("que hoy es {word} y {string} vence el {word}", async ({}, hoy: string, nombre: string, vence: string) => {
+  hojaCon([[...separar(nombre), vence]]);
+  writeFileSync(ARCHIVO_HOY, hoy);
+});
+
+Then("{string} aparece marcada como {string}", async ({ page }, nombre: string, marca: string) => {
+  const [producto, lote] = separar(nombre);
+  const item = page.getByRole("listitem").filter({ hasText: producto }).filter({ hasText: lote });
+  await expect(item).toContainText(marca);
+});
+
 When("entro a la portada", async ({ page }) => {
   await page.goto("/");
 });
