@@ -47,6 +47,17 @@ it("marca «vencida» y en gris las de fecha anterior a hoy", async () => {
   expect(leche.style.color).toBe("gray");
 });
 
+it("muestra arriba el contador de las que vencen en los próximos 7 días", async () => {
+  vi.mocked(leerEtiquetas).mockResolvedValueOnce([
+    { producto: "Leche", lote: "lote C", vence: "2026-10-08" },
+    { producto: "Queso", lote: "lote B", vence: "2026-10-12" },
+    { producto: "Pan", lote: "lote D", vence: "2026-10-17" },
+    { producto: "Yogur", lote: "lote A", vence: "2026-10-20" },
+  ]);
+  render(await Page());
+  expect(screen.getByText("2 vencen esta semana")).toBeTruthy();
+});
+
 it("marca «vence pronto» y en rojo solo las que vencen en 7 días o menos", async () => {
   render(await Page());
   const queso = screen.getByText("Queso", { selector: "strong" }).closest("li")!;

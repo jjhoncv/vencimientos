@@ -12,6 +12,7 @@ export default async function Page() {
   return (
     <main>
       <h1>{leerNombreDelProyecto()}</h1>
+      {etiquetas.length > 0 && <p>{etiquetas.filter((e) => vencePronto(e.vence, hoy)).length} vencen esta semana</p>}
       {etiquetas.length === 0 ? (
         <p>No hay etiquetas cargadas</p>
       ) : (
