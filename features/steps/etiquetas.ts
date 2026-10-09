@@ -39,6 +39,10 @@ Given(
   },
 );
 
+Given("que la hoja no tiene etiquetas", async () => {
+  hojaCon([]);
+});
+
 When("entro a la portada", async ({ page }) => {
   await page.goto("/");
 });
@@ -52,6 +56,10 @@ Then("{string} aparece antes que {string}", async ({ page }, primero: string, se
   expect(posicion(primero)).toBeGreaterThanOrEqual(0);
   expect(posicion(segundo)).toBeGreaterThanOrEqual(0);
   expect(posicion(primero)).toBeLessThan(posicion(segundo));
+});
+
+Then("veo {string}", async ({ page }, texto: string) => {
+  await expect(page.getByText(texto)).toBeVisible();
 });
 
 Then("veo las dos etiquetas con su producto, lote y fecha de vencimiento", async ({ page }) => {
