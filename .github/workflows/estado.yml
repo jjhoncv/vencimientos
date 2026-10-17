@@ -20,6 +20,6 @@ jobs:
       actions: read
       issues: read
       pull-requests: read
-    uses: jjhoncv/guardian/.github/workflows/guardian-estado.yml@v0.17.0
+    uses: jjhoncv/guardian/.github/workflows/guardian-estado.yml@v0.18.2
     # El PAT de release-please solo se usa para leer su fecha de vencimiento (los avisos avisan 7 días antes).
     secrets: inherit
